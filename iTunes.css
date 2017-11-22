@@ -1,0 +1,34 @@
+body{
+    background-image: url("http://cdn.pcwallart.com/images/solid-color-backgrounds-wallpaper-2.jpg");
+}
+/*  STYLES MAIN INPUT BOX  */
+input{
+    display: block;
+    font-size: 25px;
+    min-width: 560px;
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 12.5px;
+    padding: 9px;
+    padding-right: 40px;
+    padding-left: 12px;
+    background-color: rgba(255,255,255,.35);
+    border: 1.75px solid white;
+    outline: none;
+    font-family: "Montserrat";
+    font-weight: 500;
+    color: rgba(255,255,255,.875);
+    border-radius: 10px;
+    background-image: url("music.png");
+    background-size: 32px;
+    background-repeat: no-repeat;
+    background-position: 97.5%;
+}
+input::placeholder{
+    color: rgba(255,255,255,.5);
+    font-weight: 300;
+}
+input:focus{
+    color: white;
+}
