@@ -5,13 +5,13 @@ body{
 input{
     display: block;
     font-size: 25px;
-    min-width: 560px;
+    min-width: 540px;
     width: 80%;
     max-width: 800px;
     margin: 0 auto;
     margin-top: 12.5px;
     padding: 9px;
-    padding-right: 40px;
+    padding-right: 60px;
     padding-left: 12px;
     background-color: rgba(255,255,255,.35);
     border: 1.75px solid white;
