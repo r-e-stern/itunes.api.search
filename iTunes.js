@@ -9,14 +9,44 @@
 //     error: function() { alert('Failed!'); }
 // });
 
-function handle(){
-
+function handle(result){
+    $("#main").empty().append("<table></table>");
+    $("#main table").toggle();
+    var count = 0;
+    for(var i=0; i<result.resultCount; i++){
+        if(result.results[i].kind == "song"){
+            $("#main table").append("<tr></tr>");
+            $("#main table tr:last-child").append("<td><img src='"+result.results[i].artworkUrl30+"'></td>").append("<td>"+result.results[i].trackName+"</td>");
+            count++;
+        }
+        if(count==25){
+            break;
+        }
+    }
+    var showStr = ""
+    $("table").toggle();
+    $("tr").toggle();
+    for(var i=0; i<count; i++){
+        $("#main table tr:nth-child("+i+")").delay(i*100).fadeTo(300,1);
+        console.log("tst");
+    }
 }
 
 $(document).ready(function () {
    $("input").keyup(function(){
-       if(event.code == "Enter"){
-           console.log("Enter pressed.");
+       if(event.code == "Enter" && this.value!=""){
+           var searchterm = this.value.toLowerCase().replace(" ","+");;
+           $.ajax({
+               url: "https://itunes.apple.com/search?term=" + searchterm,
+               type: 'GET',
+               crossDomain: true,
+               dataType: 'jsonp',
+               success: function(result){
+                   console.log(result);
+                   handle(result);
+               },
+               error: function(){alert('Failed!');}
+           });
        }
    });
 });

@@ -1,5 +1,10 @@
-body{
+nav{
     background-image: url("http://cdn.pcwallart.com/images/solid-color-backgrounds-wallpaper-2.jpg");
+    position: absolute;
+    top: 0;
+    left:0;
+    right: 0;
+    padding: 18px;
 }
 /*  STYLES MAIN INPUT BOX  */
 input{
@@ -9,7 +14,7 @@ input{
     width: 80%;
     max-width: 800px;
     margin: 0 auto;
-    margin-top: 12.5px;
+    margin-top: -3px;
     padding: 9px;
     padding-right: 60px;
     padding-left: 12px;
@@ -33,11 +38,6 @@ input:focus{
     color: white;
 }
 
-#main{
-    position: absolute;
-    background-color: white;
-    top: 81px;
-    left: 0;
-    right: 0;
-    bottom: 12.5px;
+#main {
+    margin-top: 90px;
 }
