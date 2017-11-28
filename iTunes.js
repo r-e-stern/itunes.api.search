@@ -1,5 +1,5 @@
 // $.ajax({
-//     url: "https://itunes.apple.com/search?term=alexander+courage",
+//     url: "https://itunes.apple.com/search?term=william+shatner&media=music&limit=25&entity=song",
 //     type: 'GET',
 //     crossDomain: true,
 //     dataType: 'jsonp',
@@ -13,20 +13,16 @@ function handle(result){
     $("#main").empty().append("<table></table>");
     $("#main table").toggle();
     var count = 0;
+    var color = gradient("ffffff","b3b3b3",result.resultCount);
     for(var i=0; i<result.resultCount; i++){
-        if(result.results[i].kind == "song"){
-            $("#main table").append("<tr></tr>");
-            $("#main table tr:last-child").append("<td><img src='"+result.results[i].artworkUrl30+"'></td>").append("<td>"+result.results[i].trackName+"</td>");
-            count++;
-        }
-        if(count==25){
-            break;
-        }
+        count = i+1;
+        $("#main table").append("<tr></tr>");
+        $("#main table tr:last-child").append("<td style='color:"+color[i]+"'>"+count+"</td><td><img src='"+result.results[i].artworkUrl100+"'></td>"+"<td><em>"+result.results[i].trackName+"</em><br><span>"+result.results[i].artistName+"</span></td>");
     }
-    var showStr = ""
+
     $("table").toggle();
     $("tr").toggle();
-    for(var i=0; i<count; i++){
+    for(var i=0; i<$("table").children().length; i++){
         $("#main table tr:nth-child("+i+")").delay(i*100).fadeTo(300,1);
         console.log("tst");
     }
@@ -37,7 +33,7 @@ $(document).ready(function () {
        if(event.code == "Enter" && this.value!=""){
            var searchterm = this.value.toLowerCase().replace(" ","+");;
            $.ajax({
-               url: "https://itunes.apple.com/search?term=" + searchterm,
+               url: "https://itunes.apple.com/search?term=" + searchterm +"&media=music&limit=26&entity=song",
                type: 'GET',
                crossDomain: true,
                dataType: 'jsonp',
@@ -50,9 +46,6 @@ $(document).ready(function () {
        }
    });
 });
-
-// #0f678b
-// #4d9490
 
 //INPUT: w/o octothorpe
 function gradient(colora, colorb, stops){

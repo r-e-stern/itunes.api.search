@@ -1,10 +1,13 @@
 nav{
-    background-image: url("http://cdn.pcwallart.com/images/solid-color-backgrounds-wallpaper-2.jpg");
     position: absolute;
     top: 0;
     left:0;
     right: 0;
     padding: 18px;
+}
+body{
+    background-image: url("http://cdn.pcwallart.com/images/solid-color-backgrounds-wallpaper-2.jpg");
+    background-attachment: fixed;
 }
 /*  STYLES MAIN INPUT BOX  */
 input{
@@ -40,4 +43,43 @@ input:focus{
 
 #main {
     margin-top: 90px;
+    padding: 6px;
+}
+img{
+    height:100px;
+}
+td:first-child{
+    font-family: "Montserrat";
+    font-size: 55px;
+    font-weight: 600;
+    text-align: right;
+    width: 60px;
+    padding-right: 15px;
+    opacity: .2;
+}
+td:nth-child(2){
+    width: 58px;
+    text-align: center;
+}
+td:nth-child(3){
+    padding-left: 8px;
+}
+td:nth-child(3) em{
+    font-size: 22.5px;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-family: "Montserrat";
+    font-style: normal;
+    color: white;
+}
+td:nth-child(3) span{
+    font-size: 15px;
+    font-family: "Montserrat";
+}
+table{
+    min-width: 500px;
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    margin-left: 10%;
 }
