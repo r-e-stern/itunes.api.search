@@ -2,6 +2,7 @@
     ADD RUNTIME
     ADD PREVIEW (somehow)
     ADD SETTINGS
+    ADD FAILURE PROTOCOL
 */
 
 function handle(result){
