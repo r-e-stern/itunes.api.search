@@ -54,18 +54,12 @@ td:first-child{
     font-size: 55px;
     font-weight: 600;
     text-align: right;
-    width: 60px;
+    width: 70px;
     padding-right: 15px;
     opacity: .2;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-td:last-child{
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
 }
 td:nth-child(2){
-    width: 58px;
+    width: 60px;
     text-align: center;
 }
 td:nth-child(3){
@@ -100,8 +94,14 @@ tr:hover{
     background-color: rgba(255,255,255,.25);
     transition: 300ms;
 }
-td{
-    padding: 4px;
+td {
+    padding: 5px;
     margin-left: 0px;
     margin-right: 0px;
     border-bottom: 2px solid transparent;
+    vertical-align: middle;
+}
+a{
+    text-decoration-line: none;
+    color: inherit;
+}

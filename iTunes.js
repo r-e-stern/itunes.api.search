@@ -1,13 +1,8 @@
-// $.ajax({
-//     url: "https://itunes.apple.com/search?term=william+shatner&media=music&limit=25&entity=song",
-//     type: 'GET',
-//     crossDomain: true,
-//     dataType: 'jsonp',
-//     success: function(result) {
-//         console.log(result);
-//         handle(result) },
-//     error: function() { alert('Failed!'); }
-// });
+/*  ADD ALBUM
+    ADD RUNTIME
+    ADD PREVIEW (somehow)
+    ADD SETTINGS
+*/
 
 function handle(result){
     $("#main").empty().append("<table></table>");
@@ -19,13 +14,13 @@ function handle(result){
         $("#main table").append("<tr></tr>");
         $("#main table tr:last-child").append("<td style='color:"+color[i]+"'>"+count+"</td><td><img src='"+result.results[i].artworkUrl100+"'></td>"+"<td><em>"+result.results[i].trackName+"</em><br><span>"+result.results[i].artistName+"</span></td>");
     }
-
     $("table").toggle();
     $("tr").toggle();
     for(var i=0; i<$("table").children().length; i++){
-        $("#main table tr:nth-child("+i+")").delay(i*100).fadeTo(300,1);
-        console.log("tst");
+        count = i+1;
+        $("#main table tr:nth-child("+count+")").wrapInner("<a href='"+result.results[i].trackViewUrl+"' target='_blank'></a>").delay(i*100).fadeTo(300,1);
     }
+    $("input").attr("placeholder", $("input").val()).val('');
 }
 
 $(document).ready(function () {
@@ -33,7 +28,7 @@ $(document).ready(function () {
        if(event.code == "Enter" && this.value!=""){
            var searchterm = this.value.toLowerCase().replace(" ","+");;
            $.ajax({
-               url: "https://itunes.apple.com/search?term=" + searchterm +"&media=music&limit=26&entity=song",
+               url: "https://itunes.apple.com/search?term=" + searchterm +"&media=music&limit=25&entity=song",
                type: 'GET',
                crossDomain: true,
                dataType: 'jsonp',
@@ -60,7 +55,6 @@ function gradient(colora, colorb, stops){
     var g = 0;
     var b = 0;
     var color = [];
-    console.log(colora1, colora2, colora3, colorb1, colorb2, colorb3);
     for(var i=0; i<(2+stops); i++){
         weight = i/(1+stops);
         r = Math.floor(colorb1*weight + colora1*(1-weight)).toString(16);
