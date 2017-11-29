@@ -47,6 +47,7 @@ input:focus{
 }
 img{
     height:100px;
+    vertical-align: middle;
 }
 td:first-child{
     font-family: "Montserrat";
@@ -56,6 +57,12 @@ td:first-child{
     width: 60px;
     padding-right: 15px;
     opacity: .2;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+td:last-child{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 td:nth-child(2){
     width: 58px;
@@ -81,5 +88,20 @@ table{
     width: 80%;
     max-width: 900px;
     margin: auto;
-    margin-left: 10%;
+    border-collapse: collapse;
 }
+td:first-child, td:nth-child(2){
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+tr:hover{
+    background-color: rgba(255,255,255,.25);
+    transition: 300ms;
+}
+td{
+    padding: 4px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-bottom: 2px solid transparent;
