@@ -86,6 +86,7 @@ tr > td:nth-child(2) img{
     filter: invert(100%);
     opacity: .25;
     transition: 300ms;
+    z-index: 10;
 }
 tr > td:nth-child(2) img:hover{
     opacity: 1;
@@ -117,4 +118,15 @@ td {
 a{
     text-decoration-line: none;
     color: inherit;
+}
+strong{
+    vertical-align: text-bottom;
+    text-transform:uppercase;
+    font-family: "Montserrat";
+    font-size: 11px;
+    border: 1px solid red;
+    padding: 1.25px 2.5px 1.25px 2.5px ;
+    color: red;
+    background-color: rgba(255,200,200,.3);
+    text-shadow: .5px .5px black;
 }

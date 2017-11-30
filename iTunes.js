@@ -1,6 +1,5 @@
 /*  ADD ALBUM
     ADD RUNTIME
-    ADD PREVIEW (somehow)
     ADD SETTINGS
     ADD FAILURE PROTOCOL
     ADD EXPLICITNESS
@@ -15,34 +14,38 @@ function handle(result){
         count = i+1;
         res = result.results[i];
         $("table").append("<tr></tr>").find("tr:last-child").append("<td style='color:"+color[i]+"'>"+count+"</td><td><img src='"+res.artworkUrl100+"'></td>"+"<td><em>"+res.trackName+"</em><br><span>"+res.artistName+"</span></td>");
+        if(res.trackExplicitness = "explicit"){
+            $("table").find("tr:last-child td:nth-child(3)").append(" <strong>Explicit</strong>");
+        }
     }
     $("table").toggle().find("tr").toggle();
     for(var j=0; j<$("table").children().length; j++){
         count = j+1;
         res = result.results[j];
         $("tr:nth-child("+count+")").wrapInner("<a href='"+res.trackViewUrl+"' target='_blank'></a>").append("<td><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/480px-Speaker_Icon.svg.png'></td>").delay(j*100).fadeTo(300,1);
+        $("tr > td > img").wrap("<a target='_blank' href='"+res.previewUrl+"'></a>")
     }
-    $("input").attr("placeholder", $("input").val()).val('');
 
+    $("input").attr("placeholder", $("input").val()).val('');
 }
 
-$(document).ready(function () {
-   $("input").keyup(function(){
-       if(event.code == "Enter" && this.value!=""){
-           var searchterm = this.value.toLowerCase().replace(" ","+");;
-           $.ajax({
-               url: "https://itunes.apple.com/search?term=" + searchterm +"&media=music&limit=25&entity=song",
-               type: 'GET',
-               crossDomain: true,
-               dataType: 'jsonp',
-               success: function(result){
-                   console.log(result);
-                   handle(result);
-               },
-               error: function(){alert('Failed!');}
-           });
-       }
-   });
+$(document).ready(function(){
+    $("input").keyup(function(){
+    if(event.code == "Enter" && this.value!=""){
+       var searchterm = this.value.toLowerCase().replace(" ","+");;
+       $.ajax({
+           url: "https://itunes.apple.com/search?term=" + searchterm +"&media=music&limit=25&entity=song",
+           type: 'GET',
+           crossDomain: true,
+           dataType: 'jsonp',
+           success: function(result){
+               console.log(result);
+               handle(result);
+           },
+           error: function(){alert('Failed!');}
+       });
+    }
+    });
 });
 
 //INPUT: w/o octothorpe
