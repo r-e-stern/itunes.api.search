@@ -3,25 +3,27 @@
     ADD PREVIEW (somehow)
     ADD SETTINGS
     ADD FAILURE PROTOCOL
+    ADD EXPLICITNESS
 */
 
 function handle(result){
-    $("#main").empty().append("<table></table>");
-    $("#main table").toggle();
+    $("#main").empty().append("<table></table>").find("table").toggle();
     var count = 0;
+    var res = 0;
     var color = gradient("ffffff","b3b3b3",result.resultCount);
     for(var i=0; i<result.resultCount; i++){
         count = i+1;
-        $("#main table").append("<tr></tr>");
-        $("#main table tr:last-child").append("<td style='color:"+color[i]+"'>"+count+"</td><td><img src='"+result.results[i].artworkUrl100+"'></td>"+"<td><em>"+result.results[i].trackName+"</em><br><span>"+result.results[i].artistName+"</span></td>");
+        res = result.results[i];
+        $("table").append("<tr></tr>").find("tr:last-child").append("<td style='color:"+color[i]+"'>"+count+"</td><td><img src='"+res.artworkUrl100+"'></td>"+"<td><em>"+res.trackName+"</em><br><span>"+res.artistName+"</span></td>");
     }
-    $("table").toggle();
-    $("tr").toggle();
-    for(var i=0; i<$("table").children().length; i++){
-        count = i+1;
-        $("#main table tr:nth-child("+count+")").wrapInner("<a href='"+result.results[i].trackViewUrl+"' target='_blank'></a>").delay(i*100).fadeTo(300,1);
+    $("table").toggle().find("tr").toggle();
+    for(var j=0; j<$("table").children().length; j++){
+        count = j+1;
+        res = result.results[j];
+        $("tr:nth-child("+count+")").wrapInner("<a href='"+res.trackViewUrl+"' target='_blank'></a>").append("<td></td>").delay(j*100).fadeTo(300,1);
     }
     $("input").attr("placeholder", $("input").val()).val('');
+
 }
 
 $(document).ready(function () {

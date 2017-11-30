@@ -49,7 +49,7 @@ img{
     height:100px;
     vertical-align: middle;
 }
-td:first-child{
+a td:first-child{
     font-family: "Montserrat";
     font-size: 55px;
     font-weight: 600;
@@ -58,24 +58,31 @@ td:first-child{
     padding-right: 15px;
     opacity: .2;
 }
-td:nth-child(2){
+a td:nth-child(2){
     width: 60px;
     text-align: center;
 }
-td:nth-child(3){
+a td:nth-child(3){
     padding-left: 8px;
 }
-td:nth-child(3) em{
+a td:nth-child(3) span{
+    font-size: 15px;
+    font-family: "Montserrat";
+    vertical-align: middle;
+}
+a td:nth-child(3) em{
     font-size: 22.5px;
     text-transform: uppercase;
     font-weight: 300;
     font-family: "Montserrat";
     font-style: normal;
     color: white;
+    vertical-align: middle;
 }
-td:nth-child(3) span{
-    font-size: 15px;
-    font-family: "Montserrat";
+tr > td:nth-child(2){
+    width: 40px;
+    background-color: aqua;
+    padding: 5px;
 }
 table{
     min-width: 500px;
