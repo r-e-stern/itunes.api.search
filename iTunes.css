@@ -124,9 +124,9 @@ strong{
     text-transform:uppercase;
     font-family: "Montserrat";
     font-size: 11px;
-    border: 1px solid red;
+    border: 1px solid white;
     padding: 1.25px 2.5px 1.25px 2.5px ;
-    color: red;
+    color: white;
     background-color: rgba(255,200,200,.3);
     text-shadow: .5px .5px black;
 }

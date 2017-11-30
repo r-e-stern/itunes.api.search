@@ -14,7 +14,7 @@ function handle(result){
         count = i+1;
         res = result.results[i];
         $("table").append("<tr></tr>").find("tr:last-child").append("<td style='color:"+color[i]+"'>"+count+"</td><td><img src='"+res.artworkUrl100+"'></td>"+"<td><em>"+res.trackName+"</em><br><span>"+res.artistName+"</span></td>");
-        if(res.trackExplicitness = "explicit"){
+        if(res.trackExplicitness == "explicit"){
             $("table").find("tr:last-child td:nth-child(3)").append(" <strong>Explicit</strong>");
         }
     }
