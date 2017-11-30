@@ -1,9 +1,9 @@
 nav{
-    position: absolute;
-    top: 0;
-    left:0;
-    right: 0;
+    position: sticky;
     padding: 18px;
+    top: 0;
+    z-index: 9;
+    background-image: url("http://cdn.pcwallart.com/images/solid-color-backgrounds-wallpaper-2.jpg");
 }
 body{
     background-image: url("http://cdn.pcwallart.com/images/solid-color-backgrounds-wallpaper-2.jpg");
@@ -42,7 +42,6 @@ input:focus{
 }
 
 #main {
-    margin-top: 90px;
     padding: 6px;
 }
 img{
@@ -80,9 +79,16 @@ a td:nth-child(3) em{
     vertical-align: middle;
 }
 tr > td:nth-child(2){
-    width: 40px;
-    background-color: aqua;
-    padding: 5px;
+    padding: 8px;
+}
+tr > td:nth-child(2) img{
+    height: 40px;
+    filter: invert(100%);
+    opacity: .25;
+    transition: 300ms;
+}
+tr > td:nth-child(2) img:hover{
+    opacity: 1;
 }
 table{
     min-width: 500px;

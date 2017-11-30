@@ -20,7 +20,7 @@ function handle(result){
     for(var j=0; j<$("table").children().length; j++){
         count = j+1;
         res = result.results[j];
-        $("tr:nth-child("+count+")").wrapInner("<a href='"+res.trackViewUrl+"' target='_blank'></a>").append("<td></td>").delay(j*100).fadeTo(300,1);
+        $("tr:nth-child("+count+")").wrapInner("<a href='"+res.trackViewUrl+"' target='_blank'></a>").append("<td><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/480px-Speaker_Icon.svg.png'></td>").delay(j*100).fadeTo(300,1);
     }
     $("input").attr("placeholder", $("input").val()).val('');
 
