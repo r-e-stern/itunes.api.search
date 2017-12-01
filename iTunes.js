@@ -1,5 +1,4 @@
-/*  ADD ALBUM
-    ADD RUNTIME
+/*  ADD RUNTIME
     ADD SETTINGS
 */
 
@@ -11,9 +10,9 @@ function handle(result){
     for(var i=0; i<result.resultCount; i++){
         count = i+1;
         res = result.results[i];
-        $("table").append("<tr></tr>").find("tr:last-child").append("<td style='color:"+color[i]+"'>"+count+"</td><td><img src='"+res.artworkUrl100+"'></td>"+"<td><em>"+res.trackName+"</em><br><span>"+res.artistName+"</span></td>");
+        $("table").append("<tr></tr>").find("tr:last-child").append("<td style='color:"+color[i]+"'>"+count+"</td><td><img src='"+res.artworkUrl100+"'></td>"+"<td><em>"+res.trackName+"</em><br><span>"+res.artistName+"</span><br/><span>"+res.collectionName+"</span></td>");
         if(res.trackExplicitness == "explicit"){
-            $("table").find("tr:last-child td:nth-child(3)").append(" <strong>Explicit</strong>");
+            $("table").find("tr:last-child td:nth-child(3) span:first-of-type").append(" <strong>Explicit</strong>");
         }
     }
     $("table").toggle().find("tr").toggle();
@@ -21,7 +20,7 @@ function handle(result){
         count = j+1;
         res = result.results[j];
         $("tr:nth-child("+count+")").wrapInner("<a href='"+res.trackViewUrl+"' target='_blank'></a>").append("<td><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/480px-Speaker_Icon.svg.png'></td>").delay(j*100).fadeTo(300,1);
-        $("tr > td > img").wrap("<a target='_blank' href='"+res.previewUrl+"'></a>")
+        $("tr:nth-child("+count+") > td > img").wrap("<a target='_blank' href='"+res.previewUrl+"'></a>").before("<span>&nbsp;"+msToMinSec(res.trackTimeMillis)+"</span><br>");
     }
     $("#main > img").delay(2500).slideUp(600);
     $("input").attr("placeholder", $("input").val()).val('');
@@ -70,4 +69,11 @@ function gradient(colora, colorb, stops){
         color.push("#"+r+g+b);
     }
     return color;
+}
+
+function msToMinSec(n) {
+    var min = Math.floor(n/60000);
+    var sec = Math.floor((n-(min*60000))/1000);
+    if(sec.toString().length == 1){sec = "0"+ sec;}
+    return min + ":" + sec;
 }
