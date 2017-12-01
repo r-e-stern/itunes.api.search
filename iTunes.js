@@ -1,12 +1,10 @@
 /*  ADD ALBUM
     ADD RUNTIME
     ADD SETTINGS
-    ADD FAILURE PROTOCOL
-    ADD EXPLICITNESS
 */
 
 function handle(result){
-    $("#main").empty().append("<table></table>").find("table").toggle();
+    $("#main").empty().append("<img src='Rolling.gif'><table></table>").find("table").toggle();
     var count = 0;
     var res = 0;
     var color = gradient("ffffff","b3b3b3",result.resultCount);
@@ -25,7 +23,7 @@ function handle(result){
         $("tr:nth-child("+count+")").wrapInner("<a href='"+res.trackViewUrl+"' target='_blank'></a>").append("<td><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/480px-Speaker_Icon.svg.png'></td>").delay(j*100).fadeTo(300,1);
         $("tr > td > img").wrap("<a target='_blank' href='"+res.previewUrl+"'></a>")
     }
-
+    $("#main > img").delay(2500).slideUp(600);
     $("input").attr("placeholder", $("input").val()).val('');
 }
 
@@ -42,7 +40,7 @@ $(document).ready(function(){
                console.log(result);
                handle(result);
            },
-           error: function(){alert('Failed!');}
+           error: function(){$("#main").empty().append("<h3>Search failed.</h3>");}
        });
     }
     });
