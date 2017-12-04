@@ -1,6 +1,8 @@
-/*  ADD RUNTIME
+/*
     ADD SETTINGS
+    ADD FAILURE PROTOCOL
 */
+var getN = 25;
 
 function handle(result){
     $("#main").empty().append("<img src='Rolling.gif'><table></table>").find("table").toggle();
@@ -22,28 +24,37 @@ function handle(result){
         $("tr:nth-child("+count+")").wrapInner("<a href='"+res.trackViewUrl+"' target='_blank'></a>").append("<td><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Speaker_Icon.svg/480px-Speaker_Icon.svg.png'></td>").delay(j*100).fadeTo(300,1);
         $("tr:nth-child("+count+") > td > img").wrap("<a target='_blank' href='"+res.previewUrl+"'></a>").before("<span>&nbsp;"+msToMinSec(res.trackTimeMillis)+"</span><br>");
     }
-    $("#main > img").delay(2500).slideUp(600);
+    $("#main > img").delay(100*result.resultCount).slideUp(600);
     $("input").attr("placeholder", $("input").val()).val('');
 }
 
 $(document).ready(function(){
     $("input").keyup(function(){
-    if(event.code == "Enter" && this.value!=""){
-       var searchterm = this.value.toLowerCase().replace(" ","+");;
-       $.ajax({
-           url: "https://itunes.apple.com/search?term=" + searchterm +"&media=music&limit=25&entity=song",
-           type: 'GET',
-           crossDomain: true,
-           dataType: 'jsonp',
-           success: function(result){
-               console.log(result);
-               handle(result);
-           },
-           error: function(){$("#main").empty().append("<h3>Search failed.</h3>");}
-       });
-    }
+        if(event.code == "Enter" && this.value!=""){
+           var searchterm = this.value.toLowerCase().replace(" ","+");;
+           $.ajax({
+               url: "https://itunes.apple.com/search?term=" + searchterm +"&media=music&limit="+getN+"&entity=song",
+               type: 'GET',
+               crossDomain: true,
+               dataType: 'jsonp',
+               success: function(result){
+                   console.log(result);
+                   handle(result);
+               },
+               error: function(){$("#main").empty().append("<h3>Search failed.</h3>");}
+           });
+        }
     });
+    $(document).on("keypress", function(e){
+        if(e.ctrlKey && e.which == 19){
+            $("body").append("<header>Number of songs to output:<br /><input id='slide' value='"+getN+"' type='range' min='1' max='50'></header>");
+        }
+    })
 });
+
+function slide(){
+
+}
 
 //INPUT: w/o octothorpe
 function gradient(colora, colorb, stops){
