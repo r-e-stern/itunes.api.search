@@ -39,7 +39,6 @@ $(document).ready(function(){
                crossDomain: true,
                dataType: 'jsonp',
                success: function(result){
-                   console.log(result);
                    handle(result);
                },
                error: function(){$("#main").empty().append("<h3>Search failed.</h3>");}

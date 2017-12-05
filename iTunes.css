@@ -207,3 +207,12 @@ i{
     -ms-user-select: none;
     user-select: none;
 }
+b{
+    font-family: "Montserrat";
+    color: white;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 12px;
+    text-align: center;
+    display: block;
+}
