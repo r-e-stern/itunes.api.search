@@ -29,6 +29,7 @@ function handle(result){
 }
 
 $(document).ready(function(){
+    $("header").toggle();
     $("input").keyup(function(){
         if(event.code == "Enter" && this.value!=""){
            var searchterm = this.value.toLowerCase().replace(" ","+");;
@@ -47,13 +48,20 @@ $(document).ready(function(){
     });
     $(document).on("keypress", function(e){
         if(e.ctrlKey && e.which == 19){
-            $("body").append("<header>Number of songs to output:<br /><input id='slide' value='"+getN+"' type='range' min='1' max='50'></header>");
+            $("header").slideToggle(400).find("input").val(getN);
+            slide();
         }
     })
 });
 
 function slide(){
-
+    getN = $("header input").val();
+    var margin = (($("header input").val()-1)/49*93)+1.35;
+    var txt = $("header input").val();
+    if(txt.toString().length == 1){
+        txt= "&nbsp;"+txt;
+    }
+    $("i").html(txt).css("margin-left",margin+"%");
 }
 
 //INPUT: w/o octothorpe
