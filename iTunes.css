@@ -5,8 +5,7 @@ nav{
     z-index: 9;
 }
 body{
-    background-color: cadetblue;
-    /* All will mourn the loss of my project background. */
+    background-image: url("https://web.archive.org/web/20170705123755if_/http://cdn.pcwallart.com/images/solid-color-backgrounds-wallpaper-2.jpg");
     background-attachment: fixed;
     background-size: cover;
 }
